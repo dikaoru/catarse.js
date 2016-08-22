@@ -33,8 +33,14 @@ const projectContributionReportContent = {
                     ])*/
                 ]),
                 _.map(list.collection(), (item) => {
-                    const contribution = m.prop(item);
-                    return m.component(projectContributionReportContentCard, {project: args.project, contribution: contribution});
+                    const contribution = m.prop(item),
+                          expandToggle = h.toggleProp(false, true);
+
+                    return m.component(projectContributionReportContentCard, {
+                        project: args.project,
+                        contribution: contribution,
+                        expandToggle: expandToggle
+                    });
                 })
             ]),
             m('.w-section.section.bg-gray', [
